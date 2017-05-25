@@ -41,9 +41,6 @@ import java.util.stream.Stream;
 @SpringBootApplication
 public class ElApplication {
 
-
-
-
     static List<String> collect;
 
     @Bean
