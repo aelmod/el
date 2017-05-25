@@ -30,6 +30,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Date;
@@ -51,8 +52,8 @@ public class ElApplication {
         };
     }
 
-    public static void main(String[] args) throws IOException {
-        collect = Files.lines(Paths.get("/home/aelmod/Downloads/doyle-return-388.txt"))
+    public static void main(String[] args) throws IOException, URISyntaxException {
+        collect = Files.lines(Paths.get(ElApplication.class.getClassLoader().getResource("doyle-return-388.txt").toURI()))
                 .flatMap(s -> Stream.of(s.split(" ")))
                 .collect(Collectors.toList());
         SpringApplication.run(ElApplication.class, args);
